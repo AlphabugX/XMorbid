@@ -11,6 +11,9 @@
         margin-top: 15px;
         background-color: transparent;
     }
+    #content{
+        margin-bottom: 85px;
+    }
     </style>
 {% endblock %}
 {% block content %}
@@ -42,7 +45,7 @@
     </div>
 </div>
 
-<div class="container panel panel-default">
+<div id="content" class="container panel panel-default">
     <!--<div class="panel-heading visible-xs-block"></div>-->
     <div class="panel-body">
         <div class="text-lowercase">
@@ -84,7 +87,7 @@
     </div>
 </div>
 <!--文档尾部-->
-<div id="footer" class="text-center">
+<div id="footer" class="footer navbar-fixed-bottom panel-footer text-center">
     &copy;<a href="/">{{ title }}</a> <br>
     <span class="small">
             本站我国授法律保护，路人请勿非法尝试。<br>

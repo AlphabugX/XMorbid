@@ -1,4 +1,4 @@
-from XMorbid import *
+from __init__ import os,request,time
 def table(pwd):
     folder =[]
     file = []
@@ -13,6 +13,7 @@ def table(pwd):
             #getfilemap(pwd + item + '\\',flag + 1)
             fileitem['filesize'] = '-'
             folder.append(fileitem)
+            fileitem['url'] =fileitem['url'] + '/'
         elif os.path.isfile(pwd + item):
             fileitem['filetype'] = 'file'
             filesize = os.path.getsize(pwd+item)

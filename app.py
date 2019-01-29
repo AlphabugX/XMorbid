@@ -1,12 +1,10 @@
 #!
 # -*- encoding:utf-8 -*-
-from XMorbid import *
-from XMorbid import getfilemap
+from __init__ import *
+from __init__ import getfilemap
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
-
-
 @app.route('/')
 def index(folder_path='',path_list=''):
     if folder_path == '':
@@ -24,6 +22,7 @@ def dir_folder(folder_path):
         path_url = path_url[:-1]
     path = path_url.split('/')
     path_list =[]
+    print(path_url)
     path_list.append({'name':'..','value':path_url[:len(path_url) - len(path[len(path)-1])],'time':time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(os.path.getctime(pwd + str(path_url[:len(path_url) - len(path[len(path)-1])]).replace('/','\\'))))})
     url = '/'
     for i in range(1,len(path)):
@@ -40,4 +39,4 @@ def dir_folder(folder_path):
         return index(folder_path,path_list)
 
 if __name__ == '__main__':
-    app.run(host='')
+    app.run(host='172.168.1.21')
