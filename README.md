@@ -1,6 +1,5 @@
 # XMorbid
 > XMorbid是利用flask与python基础模块，快速开发的项目。目前比较简陋，
----
 
 #### python依赖环境
 - Click==7.0
