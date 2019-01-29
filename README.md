@@ -1,7 +1,11 @@
 # XMorbid
 > XMorbid是利用flask与python基础模块，快速开发的项目。目前比较简陋，
 ### Demo
-[image](images/1.png)
+![image](/images/1.png)
+![image](/images/2.png)
+![image](/images/3.png)
+![image](/images/4.png)
+![image](/images/5.png)
 
 #### python依赖环境
 - Click==7.0
