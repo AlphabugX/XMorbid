@@ -1,0 +1,95 @@
+{%extends "bootstrap/base.html"%}
+
+{%block title %}{{ title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css"> body {
+        padding-top: 70px;
+    }
+    .breadcrumb {
+        padding: 0px;
+        margin-top: 15px;
+        background-color: transparent;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" target="_top" href="/">{{ title }}</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
+            <ol class="breadcrumb">
+                <li><span class="glyphicon glyphicon-home"></span> <a href="/">Home</a></li>
+                {% if web_path != '' %}
+                {% for item in web_path[1:] %}
+                <li><a href="{{item.value}}">{{item.name}}</a></li>
+                {% endfor %}
+                {% endif %}
+            </ol>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="alert alert-success alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+        <span class="glyphicon glyphicon-bullhorn"></span>
+        欢迎访问 {{ title }}。若了解更多，请前往
+        <span class="glyphicon glyphicon-link"></span>
+        <a href="http://www.0xc2.cn/" class="alert-link">LiRen·F4sker博客</a>
+        本人博客
+    </div>
+</div>
+
+<div class="container panel panel-default">
+    <!--<div class="panel-heading visible-xs-block"></div>-->
+    <div class="panel-body">
+        <div class="text-lowercase">
+            <h2>首页</h2>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th class="col-md-8 col-sm-8 col-lg-8 ">name</th>
+                <th class="col-md-1 col-sm-1 col-lg-1 text-left">size</th>
+                <th class="col-md-3 col-sm-3 col-lg-3 text-left">time</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if web_path != ''%}
+            <td class="col-md-8 col-sm-8 col-lg-8 ">
+            <span class="glyphicon glyphicon-folder-open">
+                <a href="{{ web_path[0].value }}">{{ web_path[0].name }}</a>
+            </span>
+            </td>
+            <td class="col-md-1 col-sm-1 col-lg-1 text-left">-</td>
+            <td class="col-md-3 col-sm-3 col-lg-3 text-left">{{ web_path[0].time }}</td>
+            {% endif%}
+
+            {% for item in table %}<tr>
+                <td class="col-md-8 col-sm-8 col-lg-8 ">
+                    {% if item.filetype == "folder" %}<span class="glyphicon glyphicon-folder-open"></span>
+                    {% elif item.filetype == "file" %}<span class="glyphicon glyphicon-file"></span>
+                    {%endif%}<a href="{{ item.url }}">{{ item.filename }}</a>
+                </td>
+                <td class="col-md-1 col-sm-1 col-lg-1 text-left">{{ item.filesize }}</td>
+                <td class="col-md-3 col-sm-3 col-lg-3 text-left">{{ item.filetime }}</td>
+            </tr>{% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--文档尾部-->
+<div id="footer" class="text-center">
+    &copy;<a href="/">{{ title }}</a> <br>
+    <span class="small">
+            本站我国授法律保护，路人请勿非法尝试。<br>
+            WEB日志记录包含IP、请求头等重要取证内容。
+        </span>
+</div>
+{% endblock %}
+
