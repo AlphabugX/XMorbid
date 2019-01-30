@@ -10,7 +10,7 @@ def index(folder_path='',path_list=''):
     if folder_path == '':
         folder_path = os.getcwd() + '\\'
     return render_template('base.html',
-                title='NMTech 资源服务器',
+                title='XMorbid 资源服务器',
                 web_path=path_list,
                 table=getfilemap.table(folder_path))
 

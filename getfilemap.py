@@ -2,7 +2,6 @@ from __init__ import os,request,time
 def table(pwd):
     folder =[]
     file = []
-    # print('[+] getfilemap(pwd) pwd:',pwd)
     for item in os.listdir(pwd):
         fileitem = {'filename': '', 'filetype': '', 'filesize': '', 'filetime': ''}
         fileitem['filename'] = item
@@ -10,10 +9,9 @@ def table(pwd):
         fileitem['url'] = str(request.path + '/' + item).replace('//', '/')
         if os.path.isdir(pwd + item):
             fileitem['filetype'] = 'folder'
-            #getfilemap(pwd + item + '\\',flag + 1)
             fileitem['filesize'] = '-'
-            folder.append(fileitem)
             fileitem['url'] =fileitem['url'] + '/'
+            folder.append(fileitem)
         elif os.path.isfile(pwd + item):
             fileitem['filetype'] = 'file'
             filesize = os.path.getsize(pwd+item)
